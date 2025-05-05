@@ -18,7 +18,7 @@
       }
 
       #custom-header {
-        background-color: #f2eadf; /* Change this to your desired header color */
+        background-color: #C79A67; /* Change this to your desired header color */
         color: white;
         padding: 12px 20px;
         font-size: 18px;
@@ -65,7 +65,93 @@
           backgroundColor: '#ffffff',
           accent: '#c89b68', // Accent color (e.g. button highlights)
           bubbleBackground: '#f0f0f0',
-          bubbleFromUserBackground: '#c89b68',
+          bubbleFromUserBackground: '#<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My Custom Copilot</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      #webchat-container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #ffffff;
+      }
+
+      #custom-header {
+        background-color: #C79A67; /* Change this to your desired header color */
+        color: white;
+        padding: 12px 20px;
+        font-size: 18px;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      #webchat {
+        flex: 1;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="webchat-container">
+      <div id="custom-header">💬 Morasalat Assistant</div>
+      <div id="webchat" role="main"></div>
+    </div>
+
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js" crossorigin="anonymous"></script>
+
+    <script>
+      (async function () {
+        const tokenEndpointURL = new URL('https://default9c021be8508f4638b1df52b0e3c615.ac.environment.api.powerplatform.com/powervirtualagents/botsbyschema/cr60e_morasalatAssistant/directline/token?api-version=2022-03-01-preview');
+        const locale = document.documentElement.lang || 'en';
+        const apiVersion = tokenEndpointURL.searchParams.get('api-version');
+
+        const [directLineURL, token] = await Promise.all([
+          fetch(new URL(`/powervirtualagents/regionalchannelsettings?api-version=${apiVersion}`, tokenEndpointURL))
+            .then(res => res.json())
+            .then(({ channelUrlsById: { directline } }) => directline),
+          fetch(tokenEndpointURL)
+            .then(res => res.json())
+            .then(({ token }) => token)
+        ]);
+
+        const directLine = window.WebChat.createDirectLine({
+          domain: new URL('v3/directline', directLineURL),
+          token
+        });
+
+        const styleOptions = {
+          hideUploadButton: true,
+          backgroundColor: '#ffffff',
+          accent: '#c89b68', // Accent color (e.g. button highlights)
+          bubbleBackground: '#cbe0d6',
+          bubbleFromUserBackground: '#f2eadf',
+          bubbleTextColor: '#000000',
+          bubbleFromUserTextColor: '#000000',
+          sendBoxBackground: '#ffffff',
+          sendBoxTextColor: '#000000'
+        };
+
+        window.WebChat.renderWebChat(
+          {
+            directLine,
+            locale,
+            styleOptions
+          },
+          document.getElementById('webchat')
+        );
+      })();
+    </script>
+  </body>
+</html>
+',
           bubbleTextColor: '#000000',
           bubbleFromUserTextColor: '#ffffff',
           sendBoxBackground: '#ffffff',
