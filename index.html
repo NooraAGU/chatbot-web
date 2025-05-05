@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Custom Copilot Agent</title>
+    <title>My Custom Copilot</title>
     <style>
       html, body {
         margin: 0;
+        padding: 0;
         height: 100%;
         font-family: 'Segoe UI', sans-serif;
       }
@@ -12,27 +13,28 @@
       #webchat-container {
         display: flex;
         flex-direction: column;
-        height: 100%;
+        height: 100vh;
         background-color: #ffffff;
       }
 
       #custom-header {
-        background-color: #c89b68; /* Change header color here */
+        background-color: #c89b68; /* Change this to your desired header color */
         color: white;
-        padding: 10px 20px;
+        padding: 12px 20px;
         font-size: 18px;
-        font-weight: bold;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
 
       #webchat {
-        flex-grow: 1;
+        flex: 1;
         height: 100%;
       }
     </style>
   </head>
   <body>
     <div id="webchat-container">
-      <div id="custom-header">💬 Your Copilot Assistant</div>
+      <div id="custom-header">💬 Morasalat Assistant</div>
       <div id="webchat" role="main"></div>
     </div>
 
@@ -40,8 +42,7 @@
 
     <script>
       (async function () {
-        const tokenEndpointURL = new URL('https://YOUR_AGENT_REGION.api.powerplatform.com/powervirtualagents/botsbyschema/YOUR_AGENT_ID/directline/token?api-version=2022-03-01-preview');
-
+        const tokenEndpointURL = new URL('https://default9c021be8508f4638b1df52b0e3c615.ac.environment.api.powerplatform.com/powervirtualagents/botsbyschema/cr60e_morasalatAssistant/directline/token?api-version=2022-03-01-preview');
         const locale = document.documentElement.lang || 'en';
         const apiVersion = tokenEndpointURL.searchParams.get('api-version');
 
@@ -60,16 +61,18 @@
         });
 
         const styleOptions = {
-          accent: '#c89b68',
-          bubbleBackground: '#f0f0f0',
-          bubbleFromUserBackground: '#d5a47a',
-          bubbleTextColor: '#000',
-          bubbleFromUserTextColor: '#fff',
           hideUploadButton: true,
-          backgroundColor: '#ffffff'
+          backgroundColor: '#ffffff',
+          accent: '#c89b68', // Accent color (e.g. button highlights)
+          bubbleBackground: '#f0f0f0',
+          bubbleFromUserBackground: '#c89b68',
+          bubbleTextColor: '#000000',
+          bubbleFromUserTextColor: '#ffffff',
+          sendBoxBackground: '#ffffff',
+          sendBoxTextColor: '#000000'
         };
 
-        WebChat.renderWebChat(
+        window.WebChat.renderWebChat(
           {
             directLine,
             locale,
