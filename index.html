@@ -62,17 +62,23 @@
             token
           });
 
-          const styleOptions = {
-            hideUploadButton: true,
-            backgroundColor: '#ffffff',
-            accent: '#c89b68',
-            bubbleBackground: '#cbe0d6',
-            bubbleFromUserBackground: '#f2eadf',
-            bubbleTextColor: '#000000',
-            bubbleFromUserTextColor: '#000000',
-            sendBoxBackground: '#ffffff',
-            sendBoxTextColor: '#000000'
-          };
+const styleOptions = {
+  hideUploadButton: true,
+  backgroundColor: '#ffffff',
+  accent: '#c89b68',
+  bubbleBackground: '#cbe0d6',
+  bubbleFromUserBackground: '#f2eadf',
+  bubbleTextColor: '#000000',
+  bubbleFromUserTextColor: '#000000',
+  sendBoxBackground: '#ffffff',
+  sendBoxTextColor: '#000000',
+
+  // 👇 Add these lines for the bot avatar
+  botAvatarBackgroundColor: '#FFFFFF',
+  botAvatarImage: 'https://www.agu.edu.bh/sites/default/files/2025-05/moraslat_logo.png',
+  botAvatarInitials: 'M'
+};
+
 
           window.WebChat.renderWebChat(
             {
