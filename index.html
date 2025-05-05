@@ -82,6 +82,17 @@
             },
             document.getElementById('webchat')
           );
+// Send the initial trigger activity to start the conversation
+directLine.postActivity({
+  type: 'event',
+  name: 'startConversation',
+  from: { id: 'user1' },
+  locale
+}).subscribe(
+  id => console.log("Start conversation event sent"),
+  error => console.error("Error sending start conversation event", error)
+);
+
         } catch (err) {
           console.error('Error initializing Web Chat:', err);
           document.getElementById('webchat').innerText = 'Failed to load chat.';
